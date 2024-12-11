@@ -34,6 +34,9 @@ public class Product implements Serializable {
     inverseJoinColumns = @JoinColumn(name = "category_id"))
     private Set<Category> categories = new HashSet<>();
 
+    // Acima foi feito um Join entre as colunas de Id do produto e Id da categória, criando a tabela produto categória.
+    // Isso foi feito para linkar categorias com produtos.
+
     public Product() {
     }
 
