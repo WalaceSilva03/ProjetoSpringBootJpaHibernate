@@ -4,10 +4,13 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import com.testespringvscode.projetoitens.entities.User;
 import com.testespringvscode.projetoitens.repositories.UserRepository;
+import com.testespringvscode.projetoitens.services.ServicesExeptions.DatabaseException;
 import com.testespringvscode.projetoitens.services.ServicesExeptions.ResourceNotFoundExeption;
 
 @Service // Registra como um service do Spring e da a permissão para ser injetado.
@@ -30,7 +33,13 @@ public class UserService {
     }
 
     public void delete(Long id) {
+        try{
         userRepository.deleteById(id);
+        } catch (EmptyResultDataAccessException e){
+           throw new ResourceNotFoundExeption(id);
+        } catch (DataIntegrityViolationException e){
+            throw new DatabaseException(e.getMessage());
+        }
     }
 
     public User update(Long id, User obj) {
