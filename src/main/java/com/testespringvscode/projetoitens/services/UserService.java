@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.testespringvscode.projetoitens.entities.User;
 import com.testespringvscode.projetoitens.repositories.UserRepository;
+import com.testespringvscode.projetoitens.services.ServicesExeptions.ResourceNotFoundExeption;
 
 @Service // Registra como um service do Spring e da a permissão para ser injetado.
 public class UserService {
@@ -21,7 +22,7 @@ public class UserService {
 
     public User findById(Long id) {
         Optional<User> obj = userRepository.findById(id);
-        return obj.get();
+        return obj.orElseThrow(() -> new ResourceNotFoundExeption(id));
     }
 
     public User insert(User obj) {
