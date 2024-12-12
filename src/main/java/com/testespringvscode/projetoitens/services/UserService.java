@@ -13,6 +13,8 @@ import com.testespringvscode.projetoitens.repositories.UserRepository;
 import com.testespringvscode.projetoitens.services.ServicesExeptions.DatabaseException;
 import com.testespringvscode.projetoitens.services.ServicesExeptions.ResourceNotFoundExeption;
 
+import jakarta.persistence.EntityNotFoundException;
+
 @Service // Registra como um service do Spring e da a permissão para ser injetado.
 public class UserService {
 
@@ -43,9 +45,13 @@ public class UserService {
     }
 
     public User update(Long id, User obj) {
+        try{
         User entity = userRepository.getReferenceById(id);
         updateData(entity, obj);
         return userRepository.save(entity);
+        } catch (EntityNotFoundException e){
+            throw new ResourceNotFoundExeption(id);
+        }
     }
 
     private void updateData(User entity, User obj) {
