@@ -6,7 +6,7 @@
 
 O projeto foi feito para aprendizado de novas tecnologias no curso organizado pela [DevSuperior](https://devsuperior.com "Site da DevSuperior").
 
-A aplicação conssiste apenas no Backend da aplicação, na qual podemos adicioanar usuários, pedidos para usuários, produtos e também suas categorias.
+A aplicação consiste apenas no Backend da aplicação, na qual podemos adicioanar usuários, pedidos para usuários, produtos e também suas categorias.
 
 # Tecnologias utilizadas
 ## Back end
