@@ -1,4 +1,4 @@
-# Projeto Backend Java - SpirngBoot
+# Projeto Backend Java - SpringBoot
 [![NPM](https://img.shields.io/npm/l/react)](https://github.com/WalaceSilva03/ProjetoSpringBootJpaHibernate/blob/main/LICENSE) 
 
 # Sobre o projeto
